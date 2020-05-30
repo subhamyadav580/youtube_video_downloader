@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Video Downloader</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        .btn {
+            background-color: DodgerBlue;
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            cursor: pointer;
+            font-size: 20px;
+          }
+          
+    </style>
+</head>
+
+<body class="bg-danger">
+    <div>
+        <h1 class="bg-secondary" style="text-align: center; padding-top: 20px; padding-bottom: 5px; font-size: 80px;">
+            FreeTube</h1>
+    </div>
+    <div class="alert alert-info" role="alert" style="margin-left: 150px; margin-top: 10px; margin-right: 100px;">
+        <p style="padding-left: 50px; padding-right: 50px;"> FreeTube is a free web application that allows you to
+            download videos from YouTube. All you need is the URL of
+            the video you want to download. Enter it and simply click 'Download!'. FreeTube will then fetch download
+            links in all
+            possible formats that the particular site provides.</p>
+    </div>
+
+    <form class="form" action="{% url 'home' %}" method="POST"
+        style="margin-left: 150px; margin-top: 10px; margin-right: 100px;">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="YouTube Link" aria-label="Link"
+                aria-describedby="basic-addon2" name="link" required>
+            <div class="input-group-append">
+                <button class="btn bg-primary" type="submit"><i class="fa fa-download"></i>Download</button>
+            </div>
+        </div>
+    </form>
+    {% for msg in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="width: 700px; margin-left: 500px;">
+        {{msg}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    {% endfor %}
+</body>
+
+</html>
+
