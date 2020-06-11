@@ -17,9 +17,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         .btn {
             background-color: DodgerBlue;
@@ -28,45 +26,62 @@
             padding: 12px 30px;
             cursor: pointer;
             font-size: 20px;
-          }
-          
+        }
     </style>
 </head>
 
-<body class="bg-danger">
-    <div>
-        <h1 class="bg-secondary" style="text-align: center; padding-top: 20px; padding-bottom: 5px; font-size: 80px;">
-            FreeTube</h1>
-    </div>
-    <div class="alert alert-info" role="alert" style="margin-left: 150px; margin-top: 10px; margin-right: 100px;">
-        <p style="padding-left: 50px; padding-right: 50px;"> FreeTube is a free web application that allows you to
-            download videos from YouTube. All you need is the URL of
-            the video you want to download. Enter it and simply click 'Download!'. FreeTube will then fetch download
-            links in all
-            possible formats that the particular site provides.</p>
-    </div>
+<body>
+    <!--Main Navigation-->
+    <header>
 
-    <form class="form" action="{% url 'home' %}" method="POST"
-        style="margin-left: 150px; margin-top: 10px; margin-right: 100px;">
-        {% csrf_token %}
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="YouTube Link" aria-label="Link"
-                aria-describedby="basic-addon2" name="link" required>
-            <div class="input-group-append">
-                <button class="btn bg-primary" type="submit"><i class="fa fa-download"></i>Download</button>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="/"><strong>FreeTube</strong></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
+        </nav>
+    </header>
+    <div class="container" style="margin-top: 5%;">
+        <div class="alert alert-info" role="alert">
+            <p> FreeTube is a free web application that allows you to
+                download videos from YouTube. All you need is the URL of
+                the video you want to download. Enter it and simply click 'Download!'. FreeTube will then fetch download
+                links in all
+                possible formats that the particular site provides.</p>
         </div>
-    </form>
-    {% for msg in messages %}
-    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="width: 700px; margin-left: 500px;">
-        {{msg}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+
+        <form class="form" action="{% url 'home' %}" method="POST">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="YouTube Link" aria-label="Link"
+                    aria-describedby="basic-addon2" name="link" required>
+                <div class="input-group-append">
+                    <button class="btn bg-primary" type="submit"><i class="fa fa-download"></i>Download</button>
+                </div>
+            </div>
+        </form>
+        {% for msg in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{msg}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        {% endfor %}
     </div>
 
-    {% endfor %}
 </body>
 
 </html>
-
