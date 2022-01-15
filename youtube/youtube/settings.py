@@ -89,7 +89,7 @@ DATABASES = {
         'NAME'    : 'quizdatabase',                  
         'USER'    : 'admin',                     
         'PASSWORD': 'Admin716381',              
-        'HOST'    : 'localhost',                
+        'HOST'    : 'database-1.cuqmkmfprmko.ap-south-1.rds.amazonaws.com',                
         'PORT'    : '3306',
     }
 }
